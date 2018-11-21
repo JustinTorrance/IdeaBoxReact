@@ -23,6 +23,7 @@ class App extends Component {
     return (
       <div>
         <NewIdeaForm addIdea={this.addIdea} />
+        <IdeasContainer ideas={this.state.ideas} />
       </div>
     );
   }

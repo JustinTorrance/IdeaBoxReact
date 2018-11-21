@@ -17,6 +17,8 @@ class NewIdeaForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.addIdea(this.state)
+    this.state.name = '';
+    this.state.description = '';
   }
 
   render() {
