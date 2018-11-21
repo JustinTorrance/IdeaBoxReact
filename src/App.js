@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NewIdeaForm from './NewIdeaForm.js';
+import IdeasContainer from './IdeasContainer.js'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      ideas: []
+    }
+  }
+
+  addIdea = (idea) => {
+    const newIdea = { ...idea, id: Date.now() }
+    const ideas = [...this.state.ideas, newIdea]
+    this.setState({ ideas })
+  }
+
+
+//passing addIdea function down to NewIdeaForm as a prop
+//this gives our form access to the function
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <NewIdeaForm addIdea={this.addIdea} />
       </div>
     );
   }
