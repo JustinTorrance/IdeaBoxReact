@@ -16,6 +16,11 @@ class App extends Component {
     this.setState({ ideas })
   }
 
+  removeIdea = (id) => {
+    const ideas = this.state.ideas.filter(idea => idea.id !== id)
+    this.setState({ideas})
+  }
+
 
 //passing addIdea function down to NewIdeaForm as a prop
 //this gives our form access to the function
@@ -23,7 +28,8 @@ class App extends Component {
     return (
       <div>
         <NewIdeaForm addIdea={this.addIdea} />
-        <IdeasContainer ideas={this.state.ideas} />
+        <IdeasContainer ideas={this.state.ideas}
+                        removeIdea={this.removeIdea} />
       </div>
     );
   }
